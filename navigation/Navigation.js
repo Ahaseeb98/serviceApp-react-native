@@ -1,3 +1,4 @@
+import React from "react";
 import Dashboard from '../screens/dashboard/dashboard';
 
 import { Facebook } from "expo";
