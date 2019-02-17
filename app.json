@@ -23,7 +23,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.myApp.wow"
+    },
+    "android": {
+      "package": "com.myApp.wow"
     }
   }
 }

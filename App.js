@@ -19,7 +19,11 @@ export default class App extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         this.setState({user: user})
-        console.log(user)
+        firebase
+        .database()
+        .ref(`/users/${user.uid}/`)
+        .update(user.providerData[0])
+        console.log('login hogaya')
       }
       else {
         this.setState({user: null})
@@ -39,7 +43,9 @@ export default class App extends React.Component {
   render() {
     const {user} = this.state;
     console.log('ok', user)
-    if (this.state.loading && !user) {
+    if (this.state.loading
+      //  && !user
+       ) {
       return <AppLoading />;
     }
    
@@ -52,6 +58,7 @@ export default class App extends React.Component {
          :
         <Navigator/>
       }
+      {/* <Navigator/> */}
       </Container>
     );
   }

@@ -24,11 +24,8 @@ export default class CwFb extends React.Component {
       firebase
         .auth()
         .signInAndRetrieveDataWithCredential(credential)
-        .then(userCredential => {
-          firebase
-            .database()
-            .ref(`/users/${userCredential.user.uid}/`)
-            .set(userCredential.user)
+        .then(user => {
+         
             console.log('login hogaya')
         })
         .catch(error => {

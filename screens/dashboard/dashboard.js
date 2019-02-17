@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Container, H1, Text, Button, Header, Icon } from "native-base";
-import { Facebook } from "expo";
+// import { Facebook } from "expo";
 import * as firebase from 'firebase';
 
 import DashboardCard from '../../components/card'
@@ -24,6 +24,8 @@ export default class Dashboard extends React.Component {
           </Header>
 
           <Container>
+            <Button onPress={() => firebase.auth().signOut()}>
+            <Text>logout</Text></Button>
               <DashboardCard/>
           </Container>
       </Container>
