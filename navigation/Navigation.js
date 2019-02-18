@@ -41,7 +41,7 @@ const StackNavigator = createStackNavigator({
 
 
   const MyDrawerNavigator = createDrawerNavigator({
-    // Home: Dashboard,
+    Home: Dashboard,
     YourBuisness: AddBuisness,
     // Form: Form
   });

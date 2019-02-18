@@ -4,7 +4,7 @@ import { Container, H1, Text, Button } from 'native-base';
 
 import CwFb from './cwfacebook';
 import CwGoogle from './cwgoogle';
-
+console.disableYellowBox = true;
 export default class Login extends React.Component {
 	constructor(props) {
 		super(props);

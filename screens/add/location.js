@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Textarea, Form, Text } from 'native-base';
+import { Button, Text, Icon } from 'native-base';
 import CurrentPosition from './mapModal';
 import ImageUpload from './imageUpload'
 
@@ -16,8 +16,10 @@ export default class Image extends Component {
 	}
 
 	data(e, f) {
-		this.handleModal();
-		console.log(e, f);
+		if(f === 'location') {
+			this.handleModal();
+		}
+        this.props.value(e, f)
 	}
 
 	handleModal() {
@@ -25,14 +27,13 @@ export default class Image extends Component {
 			modalVisible: !this.state.modalVisible
 		});
     }
-    
-    
 
 	render() {
 		return (
 			<View>
 				<ImageUpload data={this.data}/>
 				<Button onPress={() => this.handleModal()}>
+				<Icon name="map" type="Feather" />
 					<Text>Workplace Location</Text>
 				</Button>
 

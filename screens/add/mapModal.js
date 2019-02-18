@@ -108,7 +108,7 @@ class CurrentPosition extends Component {
 						position="bottomRight"
 						onPress={() => this.props.data(this.state.finalPostion === null ? this.state.region : this.state.finalPostion, 'location')}
 					>
-						<Icon name="share" />
+						<Icon name="location-pin" type="Entypo"/>
 					</Fab>
 				</Modal>
 			</View>

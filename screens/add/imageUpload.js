@@ -1,10 +1,13 @@
 import React from 'react';
-import { Image, StyleSheet, Text, Button, View, Alert, } from 'react-native';
-// import {Button} from 'native-base'
+import { Image, StyleSheet, Text, View, Alert } from 'react-native';
+import {Button, Icon} from 'native-base'
 import { ImagePicker, Permissions } from 'expo';
 import * as firebase from 'firebase';
-
+console.disableYellowBox = true;
 export default class ImageUpload extends React.Component {
+  state = {
+    image: null
+  }
   static navigationOptions = {
     header: null,
   };
@@ -33,9 +36,11 @@ export default class ImageUpload extends React.Component {
 
         console.log('uri', pickerResult.uri)
         if (!pickerResult.cancelled) {
+          this.setState({image: pickerResult.uri})
             this.UploadImage(pickerResult.uri)
               .then(() => {
-                Alert.alert("Success");
+                // Alert.alert("Success");
+                console.log('image uploaded')
               })
               .catch((error) => {
                 Alert.alert(error);
@@ -86,17 +91,22 @@ async  UploadImage(uri) {
   render() {
     return (
       <View style={styles.container}>
-        <Button onPress={this.onChooseImagePress} title="Choose image..." />
-        {/* <Button  onPress={this.onChooseImagePress}>
+        {/* <Button onPress={this.onChooseImagePress} title="Choose image..." /> */}
+        <Image
+          style={{width: 100, height: 100, borderRadius: 50}}
+          source={{uri: this.state.image ? this.state.image : 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+        />
+        <Button  onPress={this.onChooseImagePress}>
+        <Icon name="image" type="Entypo"/>
             <Text>
                 Choose an image for your Service
             </Text>
-        </Button> */}
+        </Button>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 50, alignItems: "center", }
+  container: { flex: 1, paddingTop: 50, alignItems: "center", marginBottom: 50}
 })

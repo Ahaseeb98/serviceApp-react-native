@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, AsyncStorage } from 'react-native';
 import { Input, Item, Picker, Icon } from 'native-base';
 export default class About extends Component {
 	constructor(props) {
@@ -7,21 +7,30 @@ export default class About extends Component {
 		this.state = {};
 	}
 
+	handlePicker(e) {
+		this.setState({language: e})
+		this.props.value(e, 'catagory')
+	}
+
 	render() {
-        console.log(this.props)
+		// console.log(this.props);
 		return (
 			<View>
 				<Item regular style={styles.input}>
-					<Icon name="title" type="MaterialIcons"/>
-					<Input placeholder="Title" onChangeText={(e) => this.props.value(e, "title")}/>
+					<Icon name="title" type="MaterialIcons" />
+					<Input placeholder="Title" onChangeText={(e) => this.props.value(e, 'title')} />
 				</Item>
-				{/* <Item regular  style={styles.input}>
-      <Input placeholder='Name your Service' style={{flex: 1}}  />
-        </Item> */}
-				<View style={{ borderColor: 'gray', borderWidth: 0.3, margin: 5, paddingRight: 10 }}>
+				<View
+					style={{
+						borderColor: 'gray',
+						borderWidth: 0.3,
+						margin: 5,
+						paddingRight: 10
+					}}
+				>
 					<Picker
 						selectedValue={this.state.language}
-						onValueChange={(itemValue, itemIndex) =>  this.props.value(itemValue, "Catagory")}
+						onValueChange={(itemValue, itemIndex) => this.handlePicker(itemValue)}
 					>
 						<Picker.Item label="Pick a Catagory" value={null} />
 						<Picker.Item label="Plumber" value="Plumber" />
