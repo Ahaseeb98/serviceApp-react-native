@@ -28,14 +28,20 @@ export default class Dashboard extends React.Component {
 				firebase.database().ref('users/' + childData.uid).once('value', (f) => {
 					// console.log(f.key, f.val());
 					let keyObj = null;
+					let lolObj = null
+
+					lolObj = {
+						childKey: childKey
+					}
 
 					keyObj = {
-						key: f.key
+						key: f.key,
 					};
 					obj = {
 						...childData,
 						...f.val(),
-						...keyObj
+						...keyObj,
+						...lolObj
 					};
 					arr.push(obj);
 					// console.log(arr)
@@ -52,7 +58,7 @@ export default class Dashboard extends React.Component {
 
 	render() {
 		const { arr } = this.state;
-		console.log(arr)
+		console.log('aho', arr)
 		return (
 			<Container>
 				<Header style={styles.header}>

@@ -1,8 +1,10 @@
 import React from "react";
 import Dashboard from '../screens/dashboard/dashboard';
 import AddBuisness from '../screens/add/addBuisness';
-import Form from '../screens/add/form';
+// import Profiel from '../screens/auth/'
+// import Form from '../screens/add/form';
  
+
 import { Facebook } from "expo";
 import * as firebase from 'firebase';
 
@@ -10,17 +12,18 @@ import * as firebase from 'firebase';
 // import Dashboard from '../screens/Dashboard';
 import {createDrawerNavigator, createMaterialTopTabNavigator,DrawerItems, createStackNavigator, createAppContainer} from 'react-navigation';
 import {View, ScrollView, TouchableOpacity, Text, SafeAreaView, StyleSheet, Alert, Image} from 'react-native'
+import CardDetails from "../components/cardDetails";
 
 const StackNavigator = createStackNavigator({
     Home: {
-        screen: Form
+        screen: Dashboard
     },
     YourBuisness: {
       screen: AddBuisness
-    }
-    // Login: {
-    //     screen: Login
-    // },
+    },
+    CardDetails: {
+        screen: CardDetails
+    },
     // Dashboard: {
     //     screen: Dashboard
     // }
@@ -41,7 +44,7 @@ const StackNavigator = createStackNavigator({
 
 
   const MyDrawerNavigator = createDrawerNavigator({
-    Home: Dashboard,
+    Home: StackNavigator,
     YourBuisness: AddBuisness,
     // Form: Form
   });

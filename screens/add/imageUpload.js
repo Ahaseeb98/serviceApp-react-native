@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Alert } from 'react-native';
 import {Button, Icon} from 'native-base'
-import { ImagePicker, Permissions } from 'expo';
+import { ImagePicker } from 'expo';
 import * as firebase from 'firebase';
 console.disableYellowBox = true;
 export default class ImageUpload extends React.Component {
@@ -11,16 +11,6 @@ export default class ImageUpload extends React.Component {
   static navigationOptions = {
     header: null,
   };
-
-
-  async componentDidMount() {
-    const status = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    if (status === 'granted') {
-      return 
-    } else {
-      throw new Error('Location permission not granted');
-    }
-  }
 
   onChooseImagePress = async () => {
     const {
@@ -88,6 +78,7 @@ async  UploadImage(uri) {
     console.log(url)
     this.props.data(url, 'imgUrl')
   }
+
   render() {
     return (
       <View style={styles.container}>
