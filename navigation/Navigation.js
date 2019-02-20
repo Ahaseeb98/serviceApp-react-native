@@ -13,6 +13,7 @@ import * as firebase from 'firebase';
 import {createDrawerNavigator, createMaterialTopTabNavigator,DrawerItems, createStackNavigator, createAppContainer} from 'react-navigation';
 import {View, ScrollView, TouchableOpacity, Text, SafeAreaView, StyleSheet, Alert, Image} from 'react-native'
 import CardDetails from "../components/cardDetails";
+import Contact from "../screens/contacts";
 
 const StackNavigator = createStackNavigator({
     Home: {
@@ -46,6 +47,7 @@ const StackNavigator = createStackNavigator({
   const MyDrawerNavigator = createDrawerNavigator({
     Home: StackNavigator,
     YourBuisness: AddBuisness,
+    Contacts: Contact
     // Form: Form
   });
   

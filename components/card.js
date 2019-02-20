@@ -16,6 +16,7 @@ import {
 } from 'native-base';
 
 import CardDetails from './cardDetails';
+import Profile from '../screens/auth/profile';
 
 export default class DashboardCard extends Component {
 	state = {
@@ -34,7 +35,7 @@ export default class DashboardCard extends Component {
     }
 
 	render() {
-    const { title, displayName, contact, imgUrl, photoUrl, description, catagory } = this.props.val;
+    const { title, displayName, contact, imgUrl, photoUrl, description, catagory,profilePic } = this.props.val;
     const {modalVisibility} = this.state;
 		return (
 			<Card>
@@ -43,7 +44,7 @@ export default class DashboardCard extends Component {
 						<Thumbnail
 							source={{
 								uri:
-									'http://www.personalbrandingblog.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640-300x300.png'
+									profilePic
 							}}
 						/>
 						{/* <Thumbnail source={{uri: `${photoUrl}/picture?type=small`}} /> */}

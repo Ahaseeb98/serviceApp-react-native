@@ -16,7 +16,7 @@
     "react-native-gifted-chat": "^0.7.2",
     "react-native-step-indicator": "0.0.9",
     "react-navigation": "^3.2.1",
-    "prop-types": "*"
+    "prop-types": "15.7.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

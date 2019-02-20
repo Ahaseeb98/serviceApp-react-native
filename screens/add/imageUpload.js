@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Alert } from 'react-native';
 import {Button, Icon} from 'native-base'
-import { ImagePicker } from 'expo';
+import { ImagePicker, Permissions } from 'expo';
 import * as firebase from 'firebase';
 console.disableYellowBox = true;
 export default class ImageUpload extends React.Component {

@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import { View, Text, Modal, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { Icon, Button, Card, CardItem, Body, Container } from 'native-base';
 
+import Directions from './directions'
 import ChatModal from './chatModal';
 export default class CardDetails extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			modalVisibility: true,
-			ChatModalVisibility: false
+			ChatModalVisibility: false,
+			directions: false
 		};
+	}
+
+	handleDirections() {
+		this.setState({
+			directions: !this.state.directions
+		});
 	}
 
 	handleModal() {
@@ -20,7 +28,7 @@ export default class CardDetails extends Component {
 
 	render() {
 		const { title, displayName, contact, imgUrl, photoUrl, description, catagory } = this.props.val;
-		const { ChatModalVisibility } = this.state;
+		const { ChatModalVisibility, directions } = this.state;
 		return (
 			<Modal
 				animationType="slide"
@@ -105,7 +113,7 @@ export default class CardDetails extends Component {
 							<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Chat</Text>
 						</Button>
 
-						<Button success block iconRight style={{ flex: 1, margin: 3 }}>
+						<Button success block iconRight style={{ flex: 1, margin: 3 }} onPress={() => this.handleDirections()}>
 							<Icon name="map" type="Entypo" />
 							<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Direction</Text>
 						</Button>
@@ -116,6 +124,9 @@ export default class CardDetails extends Component {
 				{/* chat modal */}
 
 				{ChatModalVisibility && <ChatModal handleModal={() => this.handleModal()} val={this.props.val}/>}
+				{
+					directions && <Directions  val={this.props.val} handleDirections={() => this.handleDirections()}/>
+				}
 			</Modal>
 		);
 	}
