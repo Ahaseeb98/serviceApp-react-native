@@ -10,6 +10,7 @@ export default class Example extends React.Component {
 	componentWillMount() {
         firebase.database().ref('messages/').on('child_added', e => {
             if(((e.val().cUser === firebase.auth().currentUser.uid) && (e.val().receiverUser === this.props.val.key)) || ((e.val().cUser === this.props.val.key) && (e.val().receiverUser === firebase.auth().currentUser.uid))) {
+                // this.setState({messages: []})
                 this.setState((previousState) => ({
                     messages: GiftedChat.append(previousState.messages, e.val())
                 }));

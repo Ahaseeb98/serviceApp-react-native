@@ -150,39 +150,39 @@ export default class Directions extends Component {
                     </View>
                     {
                         this.state.coordinates
-                        
-                        ?
-<MapView
-                        initialRegion={
-                            this.state.region
-                        }
-                        style={{ flex: 1, flexDirection: 'column' }}
-                        ref={c => this.mapView = c} // eslint-disable-line react/jsx-no-bind
-                        // onPress={this.onMapPress}
-                        loadingEnabled={true}
-                    >
-                        {this.state.coordinates.map((coordinate, index) =>
-                            <MapView.Marker key={`coordinate_${index}`} coordinate={coordinate} /> // eslint-disable-line react/no-array-index-key
-                        )}
-                        {(this.state.coordinates.length === 2) && (
-                            <MapViewDirections
-                                origin={this.state.coordinates[0]}
-                                destination={this.state.coordinates[1]}
-                                apikey={GOOGLE_MAPS_APIKEY}
-                                strokeWidth={3}
-                                strokeColor="hotpink"
-                                onReady={this.onReady}
-                                onError={this.onError}
-                            />
-                        )}
-                    </MapView>
 
-                    :
+                            ?
+                            <MapView
+                                initialRegion={
+                                    this.state.region
+                                }
+                                style={{ flex: 1, flexDirection: 'column' }}
+                                ref={c => this.mapView = c} // eslint-disable-line react/jsx-no-bind
+                                // onPress={this.onMapPress}
+                                loadingEnabled={true}
+                            >
+                                {this.state.coordinates.map((coordinate, index) =>
+                                    <MapView.Marker key={`coordinate_${index}`} coordinate={coordinate} /> // eslint-disable-line react/no-array-index-key
+                                )}
+                                {(this.state.coordinates.length === 2) && (
+                                    <MapViewDirections
+                                        origin={this.state.coordinates[0]}
+                                        destination={this.state.coordinates[1]}
+                                        apikey={GOOGLE_MAPS_APIKEY}
+                                        strokeWidth={3}
+                                        strokeColor="hotpink"
+                                        onReady={this.onReady}
+                                        onError={this.onError}
+                                    />
+                                )}
+                            </MapView>
 
-                    <Spinner/>
+                            :
+
+                            <Spinner />
 
                     }
-                    
+
                 </Modal>
             </View>
         );

@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Container, H1, Text, Button, Header, Icon, Spinner, Content } from 'native-base';
+import { Container, H1, Text, Button, Header, Icon, Spinner, Content, Tabs, Tab, ScrollableTab, TabHeading } from 'native-base';
 // import { Facebook } from "expo";
 import * as firebase from 'firebase';
 
 import DashboardCard from '../../components/card';
 // import console = require('console');
-
+import Catagory from './catagory'
 export default class Dashboard extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,7 +21,7 @@ export default class Dashboard extends React.Component {
 		let arr = [];
 		let obj = null;
 		firebase.database().ref('services/').once('value', (e) => {
-			e.forEach(function(childSnapshot) {
+			e.forEach(function (childSnapshot) {
 				var childKey = childSnapshot.key;
 				var childData = childSnapshot.val();
 				// console.log(childData);
@@ -61,29 +61,16 @@ export default class Dashboard extends React.Component {
 		console.log('aho', arr)
 		return (
 			<Container>
-				<Header style={styles.header}>
+				<Header style={styles.header} hasTabs>
 					<H1 style={styles.headerText}>Dashboard</H1>
 					<Button transparent onPress={() => this.props.navigation.openDrawer()}>
 						<Icon active name="dehaze" type="MaterialIcons" />
 					</Button>
 				</Header>
-
-				<Container>
-					<Button onPress={() => firebase.auth().signOut()}>
-						<Text>logout</Text>
-					</Button>
-					<Content>
-						{arr ? (
-							arr.map((e, i) => {
-								return <DashboardCard val={e} key={i}/>;
-							})
-						) : (
-							<View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
-								<Spinner />
-							</View>
-						)}
-					</Content>
-				</Container>
+				{/* <Button onPress={() => firebase.auth().signOut()}>
+					<Text>logout</Text>
+				</Button> */}
+				<Catagory arr={this.state.arr}/>
 			</Container>
 		);
 	}
