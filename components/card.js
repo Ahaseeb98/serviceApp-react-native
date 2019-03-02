@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Image, TouchableOpacity, Modal, View } from 'react-native';
+import { Image } from 'react-native';
 import {
-	Container,
-	Header,
-	Content,
 	Card,
 	CardItem,
 	Thumbnail,
@@ -12,21 +9,14 @@ import {
 	Icon,
 	Left,
 	Body,
-	Right
 } from 'native-base';
 
 import CardDetails from './cardDetails';
-import Profile from '../screens/auth/profile';
-
 export default class DashboardCard extends Component {
 	state = {
 		modalVisibility: false
 	};
 
-	// details() {
-	//   this.props.navigation
-  // }
-  
   
 	handleModal() {
 		this.setState({
@@ -35,7 +25,7 @@ export default class DashboardCard extends Component {
     }
 
 	render() {
-    const { title, displayName, contact, imgUrl, photoUrl, description, catagory,profilePic } = this.props.val;
+    const { title, displayName, imgUrl, profilePic } = this.props.val;
     const {modalVisibility} = this.state;
 		return (
 			<Card>
@@ -47,7 +37,6 @@ export default class DashboardCard extends Component {
 									profilePic
 							}}
 						/>
-						{/* <Thumbnail source={{uri: `${photoUrl}/picture?type=small`}} /> */}
 						<Body>
 							<Text>{title}</Text>
 							<Text note>{displayName}</Text>

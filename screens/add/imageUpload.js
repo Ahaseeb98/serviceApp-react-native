@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Alert } from 'react-native';
-import {Button, Icon} from 'native-base'
+import { Image, StyleSheet, View, Alert } from 'react-native';
+import {Button, Icon, Text} from 'native-base'
 import { ImagePicker, Permissions } from 'expo';
 import * as firebase from 'firebase';
 console.disableYellowBox = true;
@@ -82,10 +82,9 @@ async  UploadImage(uri) {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Button onPress={this.onChooseImagePress} title="Choose image..." /> */}
         <Image
-          style={{width: 100, height: 100, borderRadius: 50}}
-          source={{uri: this.state.image ? this.state.image : 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+          style={{width: 200, height: 200, borderRadius: 20}}
+          source={{uri: this.state.image ? this.state.image : 'https://www.churchtrac.com/articles/apple/uploads/2017/09/Antu_insert-image.svg_-846x846.png'}}
         />
         <Button  onPress={this.onChooseImagePress}>
         <Icon name="image" type="Entypo"/>
@@ -99,5 +98,5 @@ async  UploadImage(uri) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 50, alignItems: "center", marginBottom: 50}
+  container: { flex: 1, paddingTop: 50, alignItems: "center", marginBottom: 20}
 })

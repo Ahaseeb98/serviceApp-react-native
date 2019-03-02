@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Container, H1, Text, Button, Header, Icon, Spinner, Content, Tabs, Tab, ScrollableTab, TabHeading } from 'native-base';
-// import { Facebook } from "expo";
-import * as firebase from 'firebase';
+import { View } from 'react-native';
+import { Container, Text, Spinner, Content, Tabs, Tab, ScrollableTab, TabHeading } from 'native-base';
 
 import DashboardCard from '../../components/card';
 

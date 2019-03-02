@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Textarea, Form, Text, Item, Input, Icon } from 'native-base';
+import { Textarea, Form, Item, Input, Icon } from 'native-base';
 
 export default class Image extends Component {
 	constructor(props) {

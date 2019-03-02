@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, Modal, Alert } from 'react-native';
+import { View, Text, StyleSheet, Modal } from 'react-native';
 import { Fab, Icon, Button, Spinner, Content } from 'native-base';
 import firebase from 'firebase';
 import DashboardCard from './card'

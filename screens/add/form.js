@@ -1,14 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Steps from './StepIndicator';
-import { Icon, Header, H1, Toast, Content } from 'native-base';
+import { Header, H1, Toast, Content } from 'native-base';
 import * as firebase from 'firebase'
 
 import About from './about';
 import Image from './Image';
 import Location from './location';
 
-// import AddBuiness from './addBuisness'
 export default class Fhjhorm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -25,9 +24,6 @@ export default class Fhjhorm extends React.Component {
 	}
 
 	value = (e, f) => {
-		// console.log('chal raha he sain')
-		// let {value, name} = e.target;
-		console.log(e, f);
 		this.setState({ [f]: e });
 	};
 
@@ -40,7 +36,9 @@ export default class Fhjhorm extends React.Component {
 			contact: contact,
 			location: location,
 			imgUrl: imgUrl,
-			uid: firebase.auth().currentUser.uid
+			uid: firebase.auth().currentUser.uid,
+			rating: 0,
+			noOfRatings: 0
 		});
 		 this.props.nav();
 	}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
-import { View } from 'react-native';
 import firebase from 'firebase';
 export default class Example extends React.Component {
 	state = {
@@ -10,7 +9,6 @@ export default class Example extends React.Component {
 	componentWillMount() {
         firebase.database().ref('messages/').on('child_added', e => {
             if(((e.val().cUser === firebase.auth().currentUser.uid) && (e.val().receiverUser === this.props.val.key)) || ((e.val().cUser === this.props.val.key) && (e.val().receiverUser === firebase.auth().currentUser.uid))) {
-                // this.setState({messages: []})
                 this.setState((previousState) => ({
                     messages: GiftedChat.append(previousState.messages, e.val())
                 }));
@@ -20,12 +18,8 @@ export default class Example extends React.Component {
 		
 	}
 
-	onSend(messages = []) {
-		
-	}
-
 	onfirebase(messages) {
-        customDetails = {
+        let customDetails = {
             serviceKey: this.props.val.childKey,
             cUser: firebase.auth().currentUser.uid,
             receiverUser: this.props.val.key
@@ -44,7 +38,7 @@ export default class Example extends React.Component {
 	render() {
 		return (
 			<GiftedChat
-				style={{ height: 500 }}
+				// style={{ height: 500 }}
 				messages={this.state.messages}
 				onSend={(messages) => this.onfirebase(messages)}
 				user={{

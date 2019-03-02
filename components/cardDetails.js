@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import { Icon, Button, Card, CardItem, Body, Container } from 'native-base';
+import { View, Text, Modal, StyleSheet, ImageBackground } from 'react-native';
+import { Icon, Button, Card, CardItem, Body, Container, Content, Tabs, Tab, ScrollableTab, TabHeading } from 'native-base';
+import { Rating, AirbnbRating } from 'react-native-ratings';
 
 import Directions from './directions'
 import ChatModal from './chatModal';
+import RatingModal from './ratingModal'
 export default class CardDetails extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			modalVisibility: true,
 			ChatModalVisibility: false,
-			directions: false
+			directions: false,
+			ratingModal: false
 		};
 	}
 
@@ -26,9 +29,16 @@ export default class CardDetails extends Component {
 		});
 	}
 
+	
+	handleRating() {
+		this.setState({
+			ratingModal: !this.state.ratingModal
+		});
+	}
+
 	render() {
 		const { title, displayName, contact, imgUrl, photoUrl, description, catagory } = this.props.val;
-		const { ChatModalVisibility, directions } = this.state;
+		const { ChatModalVisibility, directions, ratingModal } = this.state;
 		return (
 			<Modal
 				animationType="slide"
@@ -95,37 +105,50 @@ export default class CardDetails extends Component {
 							</View>
 						</ImageBackground>
 					</View>
-					<View style={styles.details}>
-						<CardItem style={{ margin: 0 }}>
-							<Body>
-								<Text style={{ fontSize: 18, fontWeight: '600', width: '100%' }}>Details:</Text>
-								<Text style={{ fontSize: 15 }}>
-									{'           '}
-									{description}
-								</Text>
-							</Body>
-						</CardItem>
-					</View>
-					<Container style={{ flexDirection: 'row' }}>
-						{/* <CardItem> */}
-						<Button info block iconRight style={{ flex: 1, margin: 3 }} onPress={() => this.handleModal()}>
-							<Icon name="chat" type="Entypo" />
-							<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Chat</Text>
-						</Button>
+					<Content padder>
+						<View>
+							<View style={styles.details}>
+								<CardItem style={{ margin: 0 }}>
+									<Body>
+										<Text style={{ fontSize: 18, fontWeight: '600', width: '100%' }}>Details:</Text>
+										<Text style={{ fontSize: 15 }}>
+											{'           '}
+											{description}
+										</Text>
+									</Body>
+								</CardItem>
+							</View>
 
-						<Button success block iconRight style={{ flex: 1, margin: 3 }} onPress={() => this.handleDirections()}>
-							<Icon name="map" type="Entypo" />
-							<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Direction</Text>
-						</Button>
-						{/* </CardItem> */}
-					</Container>
+							<View style={{ flexDirection: 'row' }}>
+								{/* <CardItem> */}
+								<Button info block iconRight style={{ flex: 1, margin: 3 }} onPress={() => this.handleModal()}>
+									<Icon name="chat" type="Entypo" />
+									<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Chat</Text>
+								</Button>
+
+								<Button success block iconRight style={{ flex: 1, margin: 3 }} onPress={() => this.handleDirections()}>
+									<Icon name="map" type="Entypo" />
+									<Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Direction</Text>
+								</Button>
+								{/* </CardItem> */}
+							</View>
+							<Button block iconRight style={{ flex: 1, margin: 3, backgroundColor: '#eef8ff' }} onPress={() => this.handleRating()}>
+								<Icon style={{ color: 'black', fontSize: 25, fontWeight: '600' }} name="star-outlined" type="Entypo" />
+								<Text style={{ color: 'black', fontSize: 20, fontWeight: '400' }}>Rate  This Service</Text>
+							</Button>
+						</View>
+
+					</Content>
 				</View>
 
-				{/* chat modal */}
 
-				{ChatModalVisibility && <ChatModal handleModal={() => this.handleModal()} val={this.props.val}/>}
+
+				{/* chat modal */}
+				{ratingModal && <RatingModal handleModal={() => this.handleRating()} val={this.props.val} />}
+
+				{ChatModalVisibility && <ChatModal handleModal={() => this.handleModal()} val={this.props.val} />}
 				{
-					directions && <Directions  val={this.props.val} handleDirections={() => this.handleDirections()}/>
+					directions && <Directions val={this.props.val} handleDirections={() => this.handleDirections()} />
 				}
 			</Modal>
 		);

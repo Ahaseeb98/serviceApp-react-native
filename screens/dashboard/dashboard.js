@@ -1,11 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Container, H1, Text, Button, Header, Icon, Spinner, Content, Tabs, Tab, ScrollableTab, TabHeading } from 'native-base';
-// import { Facebook } from "expo";
+import { StyleSheet } from 'react-native';
+import { Container, H1, Button, Header, Icon } from 'native-base';
 import * as firebase from 'firebase';
 
-import DashboardCard from '../../components/card';
-// import console = require('console');
 import Catagory from './catagory'
 export default class Dashboard extends React.Component {
 	constructor(props) {
@@ -58,7 +55,7 @@ export default class Dashboard extends React.Component {
 
 	render() {
 		const { arr } = this.state;
-		console.log('aho', arr)
+		// console.log('aho', arr)
 		return (
 			<Container>
 				<Header style={styles.header} hasTabs>
@@ -67,9 +64,6 @@ export default class Dashboard extends React.Component {
 						<Icon active name="dehaze" type="MaterialIcons" />
 					</Button>
 				</Header>
-				{/* <Button onPress={() => firebase.auth().signOut()}>
-					<Text>logout</Text>
-				</Button> */}
 				<Catagory arr={this.state.arr}/>
 			</Container>
 		);

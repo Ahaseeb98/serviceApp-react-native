@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Header, Icon, Button, H1, Card, Body, Thumbnail, CardItem, Left, Right } from 'native-base'
+import { Text, TouchableOpacity } from 'react-native';
+import { Icon, Card, Body, Thumbnail, CardItem, Left, Right } from 'native-base'
 
 import ContactModal from './contactModal'
 export default class ContactCard extends Component {

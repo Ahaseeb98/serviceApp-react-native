@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Input, Item, Picker, Icon } from 'native-base';
 export default class About extends Component {
 	constructor(props) {
@@ -13,7 +13,6 @@ export default class About extends Component {
 	}
 
 	render() {
-		// console.log(this.props);
 		return (
 			<View>
 				<Item regular style={styles.input}>

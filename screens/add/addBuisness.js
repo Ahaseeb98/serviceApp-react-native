@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, View, Picker, TimePickerAndroidOpenReturn, AsyncStorage } from 'react-native';
-import { Container, Header, Content, Input, Item, H1, Button, Icon, H2, Form, Textarea, Text } from 'native-base';
-import CurrentPosition from './mapModal';
-import { Constants, Location, Permissions } from 'expo';
+import { Container, Content} from 'native-base';
+import { Location, Permissions } from 'expo';
 
 import AddForm from './form';
 export default class AddBuisness extends Component {
@@ -51,30 +49,3 @@ export default class AddBuisness extends Component {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	header: {
-		backgroundColor: '#00dba0'
-	},
-	headerText: {
-		color: 'white',
-		flex: 1,
-		flexDirection: 'row',
-		padding: 12,
-		fontWeight: '500'
-	},
-	inputCont: {
-		flex: 1,
-		flexDirection: 'column'
-	},
-	heading: {
-		flex: 1,
-		alignSelf: 'center',
-		padding: 15,
-		textDecorationLine: 'underline',
-		textDecorationStyle: 'solid'
-	},
-	input: {
-		margin: 5
-	}
-});

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import { Header, Icon, Button, H1, Card, Body, Thumbnail, CardItem, Left, Right } from 'native-base'
+import { View, StyleSheet } from 'react-native';
+import { Header, Icon, Button, H1 } from 'native-base'
 import { Permissions, Contacts } from 'expo'
 import firebase from 'firebase'
 
@@ -34,13 +34,10 @@ export default class Contact extends Component {
                     pageSize: 100,
                 });
                 if (contacts.total > 0) {
-                    //    console.log(contacts.data[0])
                     contacts.data.map((v) => {
-                        //    console.log(v.phoneNumbers[0].number)
                         arr.push(v.phoneNumbers[0].number.replace(/\s+/g, ''))
                     })
             that.setState({ arr: arr })
-                    // console.log(arr)
                 }
             } catch (error) {
                 console.log(error)

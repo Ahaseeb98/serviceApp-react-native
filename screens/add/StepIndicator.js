@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import StepIndicator from 'react-native-step-indicator';
 
 const stepIndicatorStyles = {
@@ -41,14 +40,6 @@ export default class Steps extends React.Component {
   }
 }
 
-
-const styles = StyleSheet.create({
-  
-    btn: {
-        alignSelf: 'center',
-        margin: 0,
-      }
-});
 
 
 

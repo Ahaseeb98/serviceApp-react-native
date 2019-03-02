@@ -112,8 +112,6 @@ export default class CwGoogle extends React.Component {
             <Icon name='logo-google' />
             <Text>Continue with Google</Text>
           </Button>
-
-        // <Button title="login" onPress={this.signInWithGoogleAsync}/>
     );
   }
 }

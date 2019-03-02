@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Modal, KeyboardAvoidingView, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-import { Button, Icon, Body, Item, Input } from 'native-base';
+import { View, Text, Modal, StyleSheet} from 'react-native';
+import { Button, Icon} from 'native-base';
 
 import Example from './sendChat';
 
@@ -11,7 +11,7 @@ class ChatModal extends Component {
 	}
 
 	render() {
-		const { title, displayName, contact, imgUrl, photoUrl, description, catagory } = this.props.val;
+		const { displayName, catagory } = this.props.val;
 		return (
 			<Modal
 				animationType="slide"
@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
 		backgroundColor: '#00dba4'
 	},
 	details: {
-		// flex: 1,
 		margin: 0
 	},
 	chatBtn: {

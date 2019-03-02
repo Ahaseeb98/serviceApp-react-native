@@ -8,7 +8,7 @@ import Profile from './screens/auth/profile';
 
 import Login from './screens/auth/login';
 import Navigator from './screens/dashboard/index';
-// console.disableYellowBox = true;
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -25,7 +25,6 @@ export default class App extends React.Component {
 				this.setState({ user: user.uid });
 				firebase.database().ref(`/users/${user.uid}/`).update(user.providerData[0]);
 				that.confirm()
-				// console.log('login hogaya');
 			} else {
 				this.setState({ user: null });
 			}
@@ -55,7 +54,6 @@ export default class App extends React.Component {
 
 	render() {
 		const { user, confirm } = this.state;
-		console.log('ok', confirm);
 		if (
 			this.state.loading
 			 && !user

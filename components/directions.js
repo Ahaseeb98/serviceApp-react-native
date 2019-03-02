@@ -3,15 +3,9 @@ import { View, Dimensions, StyleSheet, Alert, Modal } from 'react-native';
 import { Constants, MapView, Permissions, Location } from 'expo';
 import { Button, Icon, Text, Spinner } from 'native-base';
 
-// Using a local version here because we need it to import MapView from 'expo'
 import MapViewDirections from './directonSupport';
 
 const { width, height } = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
-const LATITUDE = 24.8607;
-const LONGITUDE = 67.0011;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 const GOOGLE_MAPS_APIKEY = 'AIzaSyCYvMpmVhFc0ydILEuXGJNYNGFnBoKPCL8';
 
@@ -22,16 +16,6 @@ export default class Directions extends Component {
 
         this.state = {
             coordinates: null
-            // [
-            //     {
-            //         latitude: 24.8950218,
-            //         longitude: 67.1077335,
-            //     },
-            //     {
-            //         latitude: 24.8735,
-            //         longitude: 67.0157,
-            //     },
-            // ],
         };
 
         this.mapView = null;
@@ -43,7 +27,6 @@ export default class Directions extends Component {
         const longDelta = accuracy / (oneDegreeOfLatitudeInMeters * Math.cos(lat * (Math.PI / 180)));
 
         this.setState({
-            // modalVisible: false,
             region: {
                 latitude: lat,
                 longitude: long,

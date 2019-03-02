@@ -93,7 +93,7 @@ class CurrentPosition extends Component {
 								description="You are here!"
 								pinColor="green"
 								draggable
-								onDragEnd={(coordinate, position) => this.setState({finalPostion: coordinate.nativeEvent})}
+								// onDragEnd={(coordinate, position) => this.setState({finalPostion: coordinate.nativeEvent})}
 							/>
 						</MapView>
 					) : (

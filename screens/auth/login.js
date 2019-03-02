@@ -23,8 +23,6 @@ export default class Login extends React.Component {
 				<View style={{ flex: 1 }}>
 					<View style={styles.logInBtn}>
 						<CwFb />
-						<Text style={{ margin: 10 }}>or</Text>
-						<CwGoogle />
 					</View>
 				</View>
 			</Container>
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
-		// backgroundColor: '#00dba9'
 	},
 	btn: {
 		flexDirection: 'column',
